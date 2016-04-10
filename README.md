@@ -2,7 +2,7 @@
 
 > Utility for detection, filtering and replacement / obscuration of forbidden words
 
-The original list of swearwords used by default was taken from [here](https://gist.github.com/jamiew/1112488).
+The original lists of swearwords used by default were taken from [here](https://gist.github.com/jamiew/1112488) and [here](https://github.com/shutterstock/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words).
 
 **Please note:** This small utility module is written to prevent or monitor the use of certain words in your content without keeping context in account. An improper use may compromise the meaning of your content. Keep in account when using.
 
