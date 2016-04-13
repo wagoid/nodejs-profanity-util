@@ -46,7 +46,7 @@ profanity.checkAsync('Lorem ipsum foo bar poop test poop damn dolor sit..')
     // [ 'poop', 'poop', 'damn' ]
   })
   .catch(function (err) {
-    console.log('Something went wrong.");
+    console.log('Something went wrong.');
   });
 ```
 
