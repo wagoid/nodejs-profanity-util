@@ -5,12 +5,10 @@
     "esnext": true,
     "globalstrict": false,
     "expr": true,
-    "indent": 4,
+    "indent": 2,
     "quotmark": true,
     "smarttabs": true,
     "trailing": true,
-    "undef": true,
-    "unused": true,
     "globals": {
         "it": true,
         "describe": true,
