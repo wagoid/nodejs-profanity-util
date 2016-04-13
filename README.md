@@ -1,5 +1,8 @@
 # Node.js Profanity Utility
 
+[![Build Status](https://travis-ci.org/wagoid/nodejs-profanity-util.svg?branch=master)](https://travis-ci.org/wagoid/nodejs-profanity-util)
+[![Coverage Status](https://coveralls.io/repos/github/wagoid/nodejs-profanity-util/badge.svg?branch=master)](https://coveralls.io/github/wagoid/nodejs-profanity-util?branch=master)
+
 > Utility for detection, filtering and replacement / obscuration of forbidden words
 
 The original lists of swearwords used by default were taken from [here](https://gist.github.com/jamiew/1112488) and [here](https://github.com/shutterstock/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words).
