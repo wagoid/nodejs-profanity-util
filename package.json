@@ -4,12 +4,13 @@
   "description": "Utility for detection, filtering and replacement / obscuration of forbidden words",
   "main": "lib/profanity.js",
   "scripts": {
-    "test": "./node_modules/istanbul/lib/cli.js cover ./node_modules/.bin/_mocha",
-    "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls"
+    "test": "node ./node_modules/istanbul/lib/cli.js cover ./node_modules/.bin/_mocha",
+    "coveralls": "cat ./coverage/lcov.info | node ./node_modules/.bin/coveralls"
   },
   "author": "Tancredi Trugenberger",
   "license": "MIT",
   "dependencies": {
+    "bluebird": "^3.3.5",
     "underscore": "^1.8.3"
   },
   "devDependencies": {
