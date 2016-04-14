@@ -127,7 +127,7 @@ describe('Profanity module', () => {
         'puta',
         'reudig'
       ]);
-    });
+      });
   });
 
   describe('.checkAsync(target)', () => {
@@ -317,6 +317,33 @@ describe('Profanity module', () => {
       return profanity.purifyAsync('Anything', { languages: ['HUE'] })
         .catch(err => {
           err.code.should.eql('ENOENT');
+        });
+    });
+    
+    it('Should work when passing a custom replacements list', () => {
+      var replacementsList = ['foo', 'bar', 'baz'];
+      return profanity.purifyAsync('Something poo something fuck', { replace: true, replacementsList})
+        .then(result => {
+          util.testPurified(result[0], 'Something [ placeholder ] something [ placeholder ]', '(foo|bar|baz)');
+          result[1].should.eql(['poo', 'fuck']);
+        });
+    });
+    
+    it('Should use the default replacement list when passing an empty replacements list', () => {
+      var replacementsList = [];
+      return profanity.purifyAsync('Something poo something fuck', { replace: true, replacementsList})
+        .then(result => {
+          util.testPurified(result[0], 'Something [ placeholder ] something [ placeholder ]');
+          result[1].should.eql(['poo', 'fuck']);
+        });
+    });
+    
+    it('Should use the default replacement list when passing a replacement list that is not an array', () => {
+      var replacementsList = 'dasdasd';
+      return profanity.purifyAsync('Something poo something fuck', { replace: true, replacementsList})
+        .then(result => {
+          util.testPurified(result[0], 'Something [ placeholder ] something [ placeholder ]');
+          result[1].should.eql(['poo', 'fuck']);
         });
     });
   });
