@@ -15,13 +15,15 @@ The original lists of swearwords used by default were taken from [here](https://
 
 ## API
 
-### `profanity.check(target_string, [ forbidden_list ])`
+### `profanity.check(target_string, [languages], [ forbidden_list ])` 
+#####async version is also available: `profanity.checkAsync(target_string, [languages], [ forbidden_list ])`
 
 Returns a list of forbidden words found in a string.
 
 **Arguments**
 
 * `target_string` - String to search
+* `languages`  (Optional )- Array of languages  to check words from. Accepts a string if just one language is needed. 
 * `forbidden_list` (Optional) - Array containing forbidden terms
 
 **Example**
@@ -33,7 +35,24 @@ console.log(profanity.check('Lorem ipsum foo bar poop test poop damn dolor sit..
 // [ 'poop', 'poop', 'damn' ]
 ```
 
+Or the async method:
+
+```javascript
+var profanity = require('profanity-util');
+
+profanity.checkAsync('Lorem ipsum foo bar poop test poop damn dolor sit..')
+  .then(function (result) {
+    console.log(result);
+    // [ 'poop', 'poop', 'damn' ]
+  })
+  .catch(function (err) {
+    console.log('Something went wrong.');
+  });
+```
+
+
 ### `profanity.purify(target, [ options ])`
+#####async version is also available: `profanity.purifyAsync(target, [ options ])`
 
 Purifies a string or strings contained in a given object or array from forbidden words.
 
@@ -54,9 +73,11 @@ The .purify method will return an Array containing two values:
 **Options**
 
 * `forbiddenList` - Array of forbidden terms to replace or obscure
+* `languages` - Array of languages  to check words from. Accepts a string if just one language is needed. 
 * `replacementsList` - Array of replacement words (To pick randomly from)
 * `obscureSymbol` - Symbol used to obscure words if `obscured` is set to true
 * `replace`- If set to true it will replace forbidden words (E.g. a*****b) instead of obscuring them
+* `maxRecursionDepth` - If you are passing objects, a recursive iteration will be performed to fiind all strings inside it. You can set the maximum depth of the recursion.
 
 **Examples**
 
@@ -73,6 +94,21 @@ console.log(profanity.purify({
 	bar: { nested: 'damn', arr: [ 'foo', 'poop' ] }
 }));
 // [ { foo: 'p**p', bar: { nested: 'd**n', arr: [ 'foo', 'p**p' ] } }, [ 'poop', 'damn', 'poop' ] ]
+```
+
+Async version:
+
+```javascript
+var profanity = require('profanity-util');
+
+profanity.purify('lorem ipsum foo damn bar poop')
+  .then(function (result) {
+    console.log(result);
+    // [ 'lorem ipsum foo d**n bar p**p, [ 'damn', 'poop' ] ]
+  })
+  .catch(function (err) {
+    console.log('Something went wrong.');
+  });
 ```
 
 **Obscure mode, custom options**
